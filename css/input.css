@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Bebas Neue", "Inter", sans-serif;
+
+  --color-ink-950: #08090c;
+  --color-ink-900: #0d0f14;
+  --color-ink-800: #14171f;
+  --color-ink-700: #1d212c;
+  --color-ink-600: #2a2f3d;
+
+  --color-gold-300: #f5d98b;
+  --color-gold-400: #e8bf5f;
+  --color-gold-500: #d4a437;
+  --color-gold-600: #a87d22;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background: var(--color-ink-950);
+    color: #e7e9ee;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--color-gold-500);
+    color: var(--color-ink-950);
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.2em] text-gold-400;
+  }
+
+  .card {
+    @apply relative flex flex-col overflow-hidden rounded-2xl border border-ink-600/70 bg-ink-900 transition duration-300;
+  }
+
+  .card:hover {
+    @apply -translate-y-1 border-gold-500/50;
+    box-shadow: 0 18px 40px -20px rgb(0 0 0 / 0.9), 0 0 0 1px rgb(212 164 55 / 0.12);
+  }
+
+  .chip {
+    @apply cursor-pointer rounded-full border border-ink-600 px-4 py-2 text-sm font-medium text-zinc-400 transition;
+  }
+
+  .chip:hover {
+    @apply border-ink-600 text-zinc-200;
+  }
+
+  .chip[aria-pressed="true"] {
+    @apply border-gold-500 bg-gold-500 font-semibold text-ink-950;
+  }
+
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-gold-500 px-5 py-3 text-sm font-bold text-ink-950 transition hover:bg-gold-400;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-ink-600 px-5 py-3 text-sm font-semibold text-zinc-200 transition hover:border-gold-500/60 hover:text-white;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-full border border-ink-600 bg-ink-800/80 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider text-zinc-400;
+  }
+
+  /* marca TS — moeda dourada com anel interno */
+  .mark {
+    @apply grid place-items-center rounded-full bg-gold-500 font-display leading-none text-ink-950;
+    /* Bebas Neue tem a caixa mais alta que as maiusculas e bearings assimetricos no "TS",
+       entao o texto nasce acima e a esquerda do centro. Valores medidos em pixel no
+       tamanho real da marca (36px), nao derivados da metrica da fonte. */
+    padding-top: 0.176em;
+    padding-left: 0.017em;
+    box-shadow: inset 0 0 0 2px var(--color-ink-950);
+  }
+
+}
+
+@utility grain {
+  background-image: radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.05) 1px, transparent 0);
+  background-size: 22px 22px;
+}
