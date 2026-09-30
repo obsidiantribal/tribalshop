@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
-/* A pasta /promo tem folha de estilo propria e escrita a mao. Sem esta
+/* A pasta /pacto tem folha de estilo propria e escrita a mao. Sem esta
    linha o Tailwind varre os arquivos dela e gera utilitarios que nunca
    sao usados aqui, so porque alguma palavra do codigo bate com um nome
    de classe. */
-@source not "../promo";
+@source not "../pacto";
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
