@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>O Pacto das Três Casas: Multi Pro, Nexus e Naga Store juntos</title>
+<meta name="description" content="Pela primeira vez, Multi Pro, Nexus Scripts e Naga Store assinaram o mesmo pacto. Automação, scripts e pontos premium num pagamento só, a partir de R$ 58,80. Lote e prazo limitados.">
+<link rel="canonical" href="https://www.tribalshop.com.br/promo/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="O Pacto das Três Casas">
+<meta property="og:description" content="Multi Pro, Nexus e Naga Store assinaram o mesmo pacto. Três serviços, um pagamento só. Lote limitado.">
+<meta property="og:url" content="https://www.tribalshop.com.br/promo/">
+<meta property="og:image" content="https://www.tribalshop.com.br/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#100e0c">
+
+<link rel="icon" type="image/png" href="../favicon-96x96.png" sizes="96x96">
+<link rel="shortcut icon" href="../favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Spectral:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="pacto.css">
+<script src="pacto.js" defer></script>
+</head>
+<body>
+
+<div class="progresso" id="progresso" aria-hidden="true"></div>
+
+<!-- ═══════════════ CABEÇALHO ═══════════════ -->
+<header class="topo">
+  <div class="wrap topo-interno">
+    <a class="marca" href="#topo">
+      <span class="brasao marca-brasao" aria-hidden="true"><span>III</span></span>
+      <span class="marca-nome">O Pacto</span>
+    </a>
+
+    <p class="topo-relogio">
+      <small>Encerra em</small>
+      <span id="relogio-topo">…</span>
+    </p>
+
+    <a href="#pactos" class="btn btn-selo btn-mini">Ver os pactos</a>
+  </div>
+</header>
+
+<main id="topo">
+
+<!-- ═══════════════ O CHAMADO ═══════════════ -->
+<section class="hero centro">
+  <div class="wrap">
+
+    <span class="selo-chamada">
+      <span class="brasa" aria-hidden="true"></span>
+      Primeira vez · Três casas, um pacto
+    </span>
+
+    <h1>
+      <span class="hero-linha">Multi Pro · Nexus · Naga Store</span>
+      O Pacto das<br>Três Casas
+    </h1>
+
+    <p class="hero-sub">
+      Três serviços que sempre disputaram o mesmo terreno assinaram o mesmo pergaminho.
+      Um pagamento só, e as três casas passam a trabalhar pela sua conta.
+    </p>
+
+    <!-- ── os três brasões ── -->
+    <div class="trio" style="margin-top:3rem">
+      <div class="trio-casa">
+        <span class="brasao brasao-mp"><span><img src="img/multipro.webp" alt="Brasão da casa Multi Pro" width="112" height="126" fetchpriority="high"></span></span>
+        <span class="trio-nome">Multi Pro</span>
+      </div>
+
+      <span class="trio-mais" aria-hidden="true">✦</span>
+
+      <div class="trio-casa">
+        <span class="brasao brasao-nx"><span><img src="img/nexus.webp" alt="Brasão da casa Nexus Scripts" width="112" height="126" fetchpriority="high"></span></span>
+        <span class="trio-nome">Nexus Scripts</span>
+      </div>
+
+      <span class="trio-mais" aria-hidden="true">✦</span>
+
+      <div class="trio-casa">
+        <span class="brasao brasao-ng"><span><img src="img/naga.webp" alt="Brasão da casa Naga Store" width="112" height="126" fetchpriority="high"></span></span>
+        <span class="trio-nome">Naga Store</span>
+      </div>
+    </div>
+
+    <div class="hero-acoes">
+      <a href="#pactos" class="btn btn-selo">Ver os três pactos</a>
+      <a href="#casas" class="btn btn-bronze">O que cada casa traz</a>
+    </div>
+
+    <!-- ── prazo e lote ── -->
+    <div class="urgencia reveal" id="urgencia">
+      <div>
+        <p class="urgencia-titulo" id="urgencia-titulo">O pacto se encerra em</p>
+        <div class="relogio" id="relogio">
+          <span class="relogio-bloco"><b class="relogio-num" data-unidade="dia">--</b><span class="relogio-rot">dias</span></span>
+          <span class="relogio-bloco"><b class="relogio-num" data-unidade="hora">--</b><span class="relogio-rot">horas</span></span>
+          <span class="relogio-bloco"><b class="relogio-num" data-unidade="min">--</b><span class="relogio-rot">min</span></span>
+          <span class="relogio-bloco"><b class="relogio-num" data-unidade="seg">--</b><span class="relogio-rot">seg</span></span>
+        </div>
+      </div>
+
+      <div>
+        <div class="lote-topo">
+          <span class="urgencia-titulo" style="text-align:left">Lote de assinaturas</span>
+          <span class="lote-restam" id="lote-restam">…</span>
+        </div>
+        <div class="lote-trilho" id="lote-trilho" role="progressbar" aria-label="Pactos já assinados neste lote">
+          <div class="lote-cheio" id="lote-cheio"></div>
+        </div>
+        <p class="lote-nota" id="lote-nota">…</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ AS TRÊS CASAS ═══════════════ -->
+<section class="secao" id="casas">
+  <div class="wrap">
+
+    <div class="cabecalho-secao reveal">
+      <p class="legenda">As casas signatárias</p>
+      <h2>Cada uma traz a sua arma</h2>
+      <p class="texto">
+        Não é um pacote montado ao acaso. Cada casa cobre uma frente que as outras duas não cobrem.
+        Juntas, elas fecham a sua conta inteira.
+      </p>
+    </div>
+
+    <div class="casas">
+
+      <!-- ── MULTI PRO ── -->
+      <article class="casa casa-mp reveal">
+        <div class="casa-topo">
+          <span class="brasao brasao-mp"><span><img src="img/multipro.webp" alt="" width="58" height="65" loading="lazy"></span></span>
+          <div>
+            <p class="casa-rotulo">A casa da automação</p>
+            <h3>Multi Pro</h3>
+          </div>
+        </div>
+
+        <p class="casa-desc">
+          Constrói, recruta, coleta, envia recursos, negocia no mercado premium e joga os eventos
+          em todas as suas contas, sem navegador aberto e sem deixar o PC ligado.
+        </p>
+
+        <ul class="casa-lista">
+          <li>50 slots de conta liberados no pacto</li>
+          <li>Roda na nuvem, 24 horas por dia</li>
+          <li>Sem VPN e sem instalar nada</li>
+        </ul>
+
+        <p class="casa-valor">Incluso nos <b>três pactos</b>, com um mês de acesso</p>
+      </article>
+
+      <!-- ── NEXUS ── -->
+      <article class="casa casa-nx reveal" data-atraso="1">
+        <div class="casa-topo">
+          <span class="brasao brasao-nx"><span><img src="img/nexus.webp" alt="" width="58" height="65" loading="lazy"></span></span>
+          <div>
+            <p class="casa-rotulo">A casa dos scripts</p>
+            <h3>Nexus Scripts</h3>
+          </div>
+        </div>
+
+        <p class="casa-desc">
+          Autofarm inteligente, agendador de comandos e a central de defesa mais completa do jogo,
+          num bot leve e rápido feito junto com os melhores jogadores.
+        </p>
+
+        <ul class="casa-lista">
+          <li>AutoCaptcha seguro e ilimitado</li>
+          <li>Mais de 30 scripts próprios</li>
+          <li>Testado de 1 a 5.000 aldeias</li>
+        </ul>
+
+        <p class="casa-valor">Incluso nos <b>três pactos</b>, com um mês de acesso</p>
+      </article>
+
+      <!-- ── NAGA ── -->
+      <article class="casa casa-ng reveal" data-atraso="2">
+        <div class="casa-topo">
+          <span class="brasao brasao-ng"><span><img src="img/naga.webp" alt="" width="58" height="65" loading="lazy"></span></span>
+          <div>
+            <p class="casa-rotulo">A casa do ouro</p>
+            <h3>Naga Store</h3>
+          </div>
+        </div>
+
+        <p class="casa-desc">
+          Pontos premium com origem legal e nota fiscal, mais baratos que na loja oficial,
+          entregues automaticamente na sua conta em até 2 minutos.
+        </p>
+
+        <ul class="casa-lista">
+          <li>Loja registrada, com CNPJ</li>
+          <li>Entrega automática, sem fila</li>
+          <li>3.000 ou 5.000 pontos, você escolhe</li>
+        </ul>
+
+        <p class="casa-valor">A partir do <b>Pacto II</b>: 3.000 ou 5.000 pontos</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ O LACRE ═══════════════ -->
+<section class="secao faixa">
+  <div class="wrap lacre reveal" id="lacre">
+    <p class="legenda">O lacre</p>
+    <h2 style="margin-top:0.9rem">Três casas, um só lacre</h2>
+    <p class="texto" style="max-width:34rem;margin:1.1rem auto 0">
+      Cada uma cravou a sua parte na mesma cera. É esse acordo que sustenta
+      os valores logo abaixo, e ele vale só até o prazo combinado.
+    </p>
+
+    <div class="selo" id="selo" aria-hidden="true">
+      <span class="selo-terco"><span class="selo-disco">III</span></span>
+      <span class="selo-terco"><span class="selo-disco">III</span></span>
+      <span class="selo-terco"><span class="selo-disco">III</span></span>
+    </div>
+
+    <p class="lacre-aviso" id="lacre-aviso">As três partes se aproximam</p>
+  </div>
+</section>
+
+<!-- ═══════════════ OS TRÊS PACTOS ═══════════════ -->
+<section class="secao" id="pactos">
+  <div class="wrap">
+
+    <div class="cabecalho-secao reveal">
+      <p class="legenda">Os três pactos</p>
+      <h2>Escolha como você entra</h2>
+      <p class="texto">
+        Todos trazem o Multi Pro e o Nexus por um mês. O que muda entre eles é
+        quanto ouro você leva junto.
+      </p>
+    </div>
+
+    <div class="pactos">
+
+      <!-- ── PACTO I ── -->
+      <article class="pacto cantos reveal">
+        <p class="romano">Pacto I</p>
+        <h3>Sentinela</h3>
+        <p class="pacto-lema">A sua conta jogando sozinha, enquanto você dorme.</p>
+
+        <ul class="pacto-itens">
+          <li class="pacto-item">
+            <span>Multi Pro · 50 slots, 1 mês</span>
+          </li>
+          <li class="pacto-item">
+            <span>Nexus Scripts · 1 mês</span>
+          </li>
+          <li class="pacto-item pacto-item-ausente">
+            <span>Sem pontos premium</span>
+          </li>
+        </ul>
+
+        <div class="pacto-preco">
+          <span class="pacto-preco-rot">Valor do pacto</span>
+          <b class="pacto-preco-val">R$ 58<small>,80</small></b>
+        </div>
+
+        <button type="button" class="btn btn-bronze btn-largo" data-escolhe="i">Escolher o Sentinela</button>
+      </article>
+
+      <!-- ── PACTO II ── -->
+      <article class="pacto pacto-honra cantos reveal" data-atraso="1">
+        <span class="pacto-fita">O mais assinado</span>
+        <p class="romano">Pacto II</p>
+        <h3>Conquista</h3>
+        <p class="pacto-lema">Automação completa e ouro para crescer o mês inteiro.</p>
+
+        <ul class="pacto-itens">
+          <li class="pacto-item">
+            <span>Multi Pro · 50 slots, 1 mês</span>
+          </li>
+          <li class="pacto-item">
+            <span>Nexus Scripts · 1 mês</span>
+          </li>
+          <li class="pacto-item pacto-item-joia">
+            <span>3.000 pontos premium</span>
+          </li>
+        </ul>
+
+        <div class="pacto-preco">
+          <span class="pacto-preco-rot">Valor do pacto</span>
+          <b class="pacto-preco-val">R$ 160<small>,80</small></b>
+        </div>
+
+        <button type="button" class="btn btn-selo btn-largo" data-escolhe="ii">Escolher o Conquista</button>
+      </article>
+
+      <!-- ── PACTO III ── -->
+      <article class="pacto cantos reveal" data-atraso="2">
+        <p class="romano">Pacto III</p>
+        <h3>Domínio</h3>
+        <p class="pacto-lema">Para quem está brigando pelo topo do ranking do mundo.</p>
+
+        <ul class="pacto-itens">
+          <li class="pacto-item">
+            <span>Multi Pro · 50 slots, 1 mês</span>
+          </li>
+          <li class="pacto-item">
+            <span>Nexus Scripts · 1 mês</span>
+          </li>
+          <li class="pacto-item pacto-item-joia">
+            <span>5.000 pontos premium</span>
+          </li>
+        </ul>
+
+        <div class="pacto-preco">
+          <span class="pacto-preco-rot">Valor do pacto</span>
+          <b class="pacto-preco-val">R$ 228<small>,80</small></b>
+        </div>
+
+        <button type="button" class="btn btn-bronze btn-largo" data-escolhe="iii">Escolher o Domínio</button>
+      </article>
+
+    </div>
+
+    <p class="pactos-nota reveal">
+      O valor de cada pacto é fechado e negociado entre as três casas para esta promoção.
+      É um pagamento único, sem mensalidade automática e sem taxa por assinar o pacto completo.
+    </p>
+
+  </div>
+</section>
+
+<!-- ═══════════════ A ASSINATURA ═══════════════ -->
+<section class="secao faixa" id="assinar">
+  <div class="wrap">
+
+    <div class="cabecalho-secao reveal">
+      <p class="legenda">A assinatura</p>
+      <h2>Assine o pacto</h2>
+      <p class="texto">
+        Seu nome e contato ficam no pedido; o mundo e o nick são o que as três casas usam
+        para liberar tudo na sua conta. Nenhuma senha é pedida, em nenhum momento.
+      </p>
+    </div>
+
+    <form class="assinatura reveal" id="forma" novalidate>
+
+      <div class="ornamento"><span>✦</span></div>
+
+      <div class="campos">
+        <div class="campo">
+          <label for="pacote">Qual pacto</label>
+          <select id="pacote" name="pacote">
+            <option value="i">Pacto I · Sentinela · R$ 58,80</option>
+            <option value="ii" selected>Pacto II · Conquista · R$ 160,80</option>
+            <option value="iii">Pacto III · Domínio · R$ 228,80</option>
+            <option value="teste">Pacto de Teste · R$ 1,00</option>
+          </select>
+        </div>
+
+        <div class="campo">
+          <label for="nome">Seu nome</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" placeholder="Como podemos te chamar" required>
+          <p class="campo-dica">Só para identificar o seu pedido.</p>
+        </div>
+
+        <div class="campos campos-duplo" style="margin-top:0">
+          <div class="campo">
+            <label for="mundo">Mundo</label>
+            <input id="mundo" name="mundo" type="text" inputmode="text" autocomplete="off" placeholder="br143" required>
+            <p class="campo-dica">Como aparece no endereço do jogo.</p>
+          </div>
+
+          <div class="campo">
+            <label for="nick">Seu nick</label>
+            <input id="nick" name="nick" type="text" autocomplete="off" placeholder="Exatamente como no jogo" required>
+            <p class="campo-dica">Com acentos e espaços, se tiver.</p>
+          </div>
+        </div>
+
+        <div class="campos campos-duplo" style="margin-top:0">
+          <div class="campo">
+            <label for="email">E-mail</label>
+            <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required>
+            <p class="campo-dica">Para receber a confirmação do pedido.</p>
+          </div>
+
+          <div class="campo">
+            <label for="telefone">WhatsApp</label>
+            <input id="telefone" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(48) 98824-2773" required>
+            <p class="campo-dica">Com DDD, caso precisemos te chamar.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="recado" id="recado" role="alert" hidden></p>
+
+      <button type="submit" class="btn btn-selo btn-largo" id="enviar" style="margin-top:1.8rem">
+        Assinar e pagar
+      </button>
+
+      <p class="miudinho" style="margin-top:1rem;text-align:center">
+        Você segue para o ambiente seguro do Mercado Pago. Pix, cartão ou boleto.
+      </p>
+    </form>
+
+  </div>
+</section>
+
+<!-- ═══════════════ COMO O PACTO SE CUMPRE ═══════════════ -->
+<section class="secao" id="como">
+  <div class="wrap">
+
+    <div class="cabecalho-secao reveal">
+      <p class="legenda">O cumprimento</p>
+      <h2>Como o pacto se cumpre</h2>
+      <p class="texto">
+        Um pagamento só, e as três casas são avisadas. Você não precisa falar
+        com cada uma separadamente.
+      </p>
+    </div>
+
+    <ol class="passos" style="list-style:none;padding:0">
+      <li class="passo reveal">
+        <h3>Escolha o pacto</h3>
+        <p>Sentinela, Conquista ou Domínio. A diferença entre eles é só quanto ouro vem junto.</p>
+      </li>
+      <li class="passo reveal" data-atraso="1">
+        <h3>Assine e pague</h3>
+        <p>Informe mundo e nick, e pague no Mercado Pago. No Pix, a confirmação sai na hora.</p>
+      </li>
+      <li class="passo reveal" data-atraso="2">
+        <h3>As casas são avisadas</h3>
+        <p>Assim que o pagamento é aprovado, as três casas recebem o seu pedido ao mesmo tempo.</p>
+      </li>
+      <li class="passo passo-final reveal" data-atraso="3">
+        <h3>Tudo entra na conta</h3>
+        <p>Multi Pro liberado, Nexus ativo e os pontos premium creditados. Sem senha, sem espera.</p>
+      </li>
+    </ol>
+
+    <!-- ── juramentos ── -->
+    <div class="juramentos reveal">
+      <div class="juramento">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+        <div>
+          <h3>Nenhuma senha é pedida</h3>
+          <p>A ativação usa só o mundo e o seu nick. Nenhuma das três casas precisa do acesso da sua conta.</p>
+        </div>
+      </div>
+
+      <div class="juramento">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h14v18l-7-4-7 4V3Z"/></svg>
+        <div>
+          <h3>Ouro com nota fiscal</h3>
+          <p>Os pontos premium vêm da Naga Store, loja registrada com CNPJ e origem legal comprovada.</p>
+        </div>
+      </div>
+
+      <div class="juramento">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        <div>
+          <h3>Entrega em minutos</h3>
+          <p>Pontos premium em até 2 minutos, e os acessos liberados assim que o pagamento cai.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════ DÚVIDAS ═══════════════ -->
+<section class="secao faixa" id="duvidas">
+  <div class="wrap">
+
+    <div class="cabecalho-secao reveal">
+      <p class="legenda">Antes de assinar</p>
+      <h2>Perguntas frequentes</h2>
+    </div>
+
+    <div class="duvidas reveal">
+
+      <details class="duvida">
+        <summary>Preciso comprar em três lugares diferentes?</summary>
+        <p>Não, e é justamente essa a razão do pacto existir. Você paga uma vez só, aqui, e as três casas são avisadas do seu pedido. O Multi Pro, o Nexus e os pontos premium chegam sem você abrir três sites e fazer três pagamentos.</p>
+      </details>
+
+      <details class="duvida">
+        <summary>O pacto sai mais barato do que comprar separado?</summary>
+        <p>Cada pacto tem um valor fechado, negociado entre as três casas só para esta promoção. São condições que não existem comprando cada serviço por fora. E além do valor, você economiza o trabalho de fazer três compras em três lugares diferentes e de acertar a ativação com cada um deles.</p>
+      </details>
+
+      <details class="duvida">
+        <summary>Preciso passar a senha da minha conta?</summary>
+        <p>Não. Para cumprir o pacto pedimos apenas o mundo em que você joga e o seu nick no jogo. Nenhuma das três casas precisa da senha da sua conta para liberar o que foi comprado.</p>
+      </details>
+
+      <details class="duvida">
+        <summary>Quanto tempo dura o pacto?</summary>
+        <p>O Multi Pro (50 slots) e o Nexus ficam ativos por um mês a partir da liberação. Os pontos premium não expiram: entram na sua conta e ficam lá até você decidir usar.</p>
+      </details>
+
+      <details class="duvida">
+        <summary>Errei o nick ou o mundo. E agora?</summary>
+        <p>Chame no WhatsApp o quanto antes. Se a ativação ainda não tiver saído, corrigimos na hora. Vale conferir com atenção antes de enviar: o nick precisa estar escrito exatamente como aparece no jogo, com acentos e espaços.</p>
+      </details>
+
+      <details class="duvida">
+        <summary>Já sou cliente de uma das três casas. Posso assinar mesmo assim?</summary>
+        <p>Pode. O tempo do pacto é somado ao que você já tem, então nada é perdido. Se ficar em dúvida sobre como fica o seu caso, chame no WhatsApp antes de fechar.</p>
+      </details>
+
+      <details class="duvida">
+        <summary>Os scripts dão risco de banimento?</summary>
+        <p>As regras variam de mundo para mundo. Se você tem dúvida sobre o que é permitido no seu, chame no WhatsApp antes de assinar que a gente te orienta com sinceridade.</p>
+      </details>
+
+      <details class="duvida">
+        <summary>O pacto vai voltar depois que acabar?</summary>
+        <p>Não temos como prometer. É a primeira vez que as três casas fecham um acordo assim, e ele vale para este lote e este prazo. Se voltar, será em outras condições.</p>
+      </details>
+
+    </div>
+
+    <!-- ── chamada final ── -->
+    <div class="final reveal">
+      <p class="legenda">Última palavra</p>
+      <h2 style="margin-top:0.9rem">Três casas. Um pacto.<br>Um prazo.</h2>
+      <p>
+        Se ainda está em dúvida sobre qual pacto faz sentido para o seu mundo e para o tamanho
+        da sua conta, chame no WhatsApp. A gente te diz na lata, sem empurrar o mais caro.
+      </p>
+
+      <div class="hero-acoes">
+        <a href="#pactos" class="btn btn-selo">Escolher o meu pacto</a>
+        <a class="btn btn-bronze" target="_blank" rel="noopener"
+           href="https://wa.me/5521979460795?text=Ol%C3%A1!%20Vim%20pela%20p%C3%A1gina%20do%20Pacto%20das%20Tr%C3%AAs%20Casas%20e%20tenho%20uma%20d%C3%BAvida.">
+          Falar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ═══════════════ RODAPÉ ═══════════════ -->
+<footer class="rodape">
+  <div class="wrap">
+    <div class="ornamento ornamento-curto"><span>✦</span></div>
+    <p class="rodape-marca" style="margin-top:1.4rem">O Pacto das Três Casas</p>
+    <p style="margin-top:0.6rem">
+      Uma promoção conjunta de Multi Pro, Nexus Scripts e Naga Store.<br>
+      Apresentada por <a href="../index.html">Tribal Shop</a> · © <span id="ano">2026</span>
+    </p>
+    <p style="margin-top:0.9rem;opacity:0.75">
+      Não somos afiliados à InnoGames. Tribal Wars é marca registrada de seus respectivos donos.
+    </p>
+  </div>
+</footer>
+
+<!-- ═══════════════ BARRA FIXA (celular) ═══════════════ -->
+<div class="barra-fixa">
+  <div>
+    <span class="barra-rot">O pacto encerra em</span>
+    <b class="barra-val" id="relogio-barra">…</b>
+  </div>
+  <a href="#pactos" class="btn btn-selo btn-mini">Ver pactos</a>
+</div>
+
+</body>
+</html>
