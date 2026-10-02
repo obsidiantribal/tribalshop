@@ -8,33 +8,33 @@
 :root {
   /* pretos quentes, com marrom no fundo. o tom e proposital: afasta
      do preto azulado usado na vitrine principal. */
-  --breu:       #100e0c;
-  --couro:      #191512;
-  --couro-alto: #221b15;
-  --linha:      #3a2e22;
-  --linha-viva: #55412e;
+  --pitch:       #100e0c;
+  --leather:      #191512;
+  --leather-high: #221b15;
+  --line:      #3a2e22;
+  --line-bright: #55412e;
 
   /* texto em creme de pergaminho, nao em cinza */
-  --pergaminho: #ede1c9;
-  --tinta:      #a5947a;
-  --tinta-fraca:#7a6c58;
+  --parchment: #ede1c9;
+  --ink:      #a5947a;
+  --ink-faint:#7a6c58;
 
   --bronze:     #c08b3e;
-  --bronze-cl:  #e3b969;
-  --bronze-es:  #8a6027;
+  --bronze-light:  #e3b969;
+  --bronze-dark:  #8a6027;
 
-  --sangue:     #9b2436;
-  --sangue-cl:  #c8394d;
-  --brasa:      #e2703a;
+  --blood:     #9b2436;
+  --blood-light:  #c8394d;
+  --ember:      #e2703a;
 
-  --casa-mp:    #5aa9e6;   /* Multi Pro */
-  --casa-nx:    #d4556a;   /* Nexus     */
-  --casa-ng:    #d9a441;   /* Naga      */
+  --house-mp:    #5aa9e6;   /* Multi Pro */
+  --house-nx:    #d4556a;   /* Nexus     */
+  --house-ng:    #d9a441;   /* Naga      */
 
   --serif:  "Spectral", Georgia, "Times New Roman", serif;
-  --titulo: "Cinzel", "Spectral", Georgia, serif;
+  --heading: "Cinzel", "Spectral", Georgia, serif;
 
-  --raio: 3px;             /* cantos quase retos: pedra, nao software */
+  --radius: 3px;             /* cantos quase retos: pedra, nao software */
   --w:    min(100% - 2.5rem, 68rem);
 }
 
@@ -42,7 +42,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 html {
-  background: var(--breu);
+  background: var(--pitch);
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
   -webkit-text-size-adjust: 100%;
@@ -56,8 +56,8 @@ html {
 body {
   position: relative;
   margin: 0;
-  background: var(--breu);
-  color: var(--pergaminho);
+  background: var(--pitch);
+  color: var(--parchment);
   font-family: var(--serif);
   font-size: 1.0625rem;
   line-height: 1.7;
@@ -81,16 +81,16 @@ body::after {
 img { max-width: 100%; display: block; }
 a { color: inherit; }
 
-::selection { background: var(--sangue); color: var(--pergaminho); }
+::selection { background: var(--blood); color: var(--parchment); }
 
 :focus-visible {
-  outline: 2px solid var(--bronze-cl);
+  outline: 2px solid var(--bronze-light);
   outline-offset: 3px;
 }
 
 /* ── 3. tipografia ───────────────────────────────────────────────── */
-h1, h2, h3, .titulo {
-  font-family: var(--titulo);
+h1, h2, h3, .heading {
+  font-family: var(--heading);
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: 0.02em;
@@ -104,8 +104,8 @@ h3 { font-size: 1.3rem; }
 
 p { margin: 0; text-wrap: pretty; }
 
-.legenda {
-  font-family: var(--titulo);
+.caption {
+  font-family: var(--heading);
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 0.34em;
@@ -113,18 +113,18 @@ p { margin: 0; text-wrap: pretty; }
   color: var(--bronze);
 }
 
-.texto     { color: var(--tinta); }
-.miudo     { font-size: 0.9rem; }
-.miudinho  { font-size: 0.8rem; color: var(--tinta-fraca); line-height: 1.6; }
-.creme     { color: var(--pergaminho); }
-.dourado   { color: var(--bronze-cl); }
+.text     { color: var(--ink); }
+.small     { font-size: 0.9rem; }
+.fine-print  { font-size: 0.8rem; color: var(--ink-faint); line-height: 1.6; }
+.cream     { color: var(--parchment); }
+.golden   { color: var(--bronze-light); }
 
 /* numeral romano decorativo */
-.romano {
-  font-family: var(--titulo);
+.roman {
+  font-family: var(--heading);
   font-size: 0.78rem;
   letter-spacing: 0.3em;
-  color: var(--bronze-es);
+  color: var(--bronze-dark);
 }
 
 /* ── 4. estrutura ────────────────────────────────────────────────── */
@@ -132,62 +132,62 @@ p { margin: 0; text-wrap: pretty; }
 
 section { position: relative; }
 
-.secao      { padding-block: clamp(4.5rem, 10vw, 7.5rem); }
-.secao-alta { padding-block: clamp(5.5rem, 12vw, 9rem); }
+.section      { padding-block: clamp(4.5rem, 10vw, 7.5rem); }
+.section-tall { padding-block: clamp(5.5rem, 12vw, 9rem); }
 
 /* faixa de fundo alternada, com filete de bronze em cima e embaixo */
-.faixa {
-  background: var(--couro);
-  border-block: 1px solid var(--linha);
+.band {
+  background: var(--leather);
+  border-block: 1px solid var(--line);
 }
 
-.centro { text-align: center; }
+.center { text-align: center; }
 
-.cabecalho-secao {
+.section-header {
   max-width: 44rem;
   margin-inline: auto;
   text-align: center;
 }
 
-.cabecalho-secao h2 { margin-top: 0.9rem; }
-.cabecalho-secao > p { margin-top: 1.1rem; }
+.section-header h2 { margin-top: 0.9rem; }
+.section-header > p { margin-top: 1.1rem; }
 
 /* ── 5. ornamentos ───────────────────────────────────────────────── */
 /* divisor com losango ao centro, usado para separar blocos */
-.ornamento {
+.ornament {
   display: flex;
   align-items: center;
   gap: 1rem;
-  color: var(--bronze-es);
+  color: var(--bronze-dark);
 }
 
-.ornamento::before,
-.ornamento::after {
+.ornament::before,
+.ornament::after {
   content: "";
   flex: 1;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--linha-viva), transparent);
+  background: linear-gradient(to right, transparent, var(--line-bright), transparent);
 }
 
-.ornamento span { font-size: 0.7rem; letter-spacing: 0.2em; }
+.ornament span { font-size: 0.7rem; letter-spacing: 0.2em; }
 
-.ornamento-curto { width: 9rem; margin-inline: auto; }
+.ornament-short { width: 9rem; margin-inline: auto; }
 
 /* cantos gravados: quatro cantoneiras de bronze em volta de um bloco */
-.cantos { position: relative; }
+.corners { position: relative; }
 
-.cantos::before,
-.cantos::after {
+.corners::before,
+.corners::after {
   content: "";
   position: absolute;
   width: 14px;
   height: 14px;
-  border: 1px solid var(--bronze-es);
+  border: 1px solid var(--bronze-dark);
   pointer-events: none;
 }
 
-.cantos::before { top: -1px; left: -1px;  border-right: 0; border-bottom: 0; }
-.cantos::after  { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+.corners::before { top: -1px; left: -1px;  border-right: 0; border-bottom: 0; }
+.corners::after  { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
 
 /* ── 6. botoes ───────────────────────────────────────────────────── */
 .btn {
@@ -197,8 +197,8 @@ section { position: relative; }
   gap: 0.6rem;
   padding: 0.95rem 1.7rem;
   border: 1px solid transparent;
-  border-radius: var(--raio);
-  font-family: var(--titulo);
+  border-radius: var(--radius);
+  font-family: var(--heading);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -210,31 +210,31 @@ section { position: relative; }
 
 .btn:active { transform: translateY(1px); }
 
-.btn-selo {
-  background: linear-gradient(175deg, var(--sangue-cl), var(--sangue) 60%, #7a1928);
+.btn-stamp {
+  background: linear-gradient(175deg, var(--blood-light), var(--blood) 60%, #7a1928);
   border-color: rgb(224 180 100 / 0.45);
   color: #fbeedd;
   box-shadow: 0 14px 30px -14px rgb(155 36 54 / 0.85), inset 0 1px 0 rgb(255 255 255 / 0.18);
 }
 
-.btn-selo:hover {
-  background: linear-gradient(175deg, #d8455a, var(--sangue-cl) 60%, var(--sangue));
+.btn-stamp:hover {
+  background: linear-gradient(175deg, #d8455a, var(--blood-light) 60%, var(--blood));
   box-shadow: 0 18px 40px -14px rgb(200 57 77 / 0.9), inset 0 1px 0 rgb(255 255 255 / 0.24);
 }
 
 .btn-bronze {
   background: transparent;
-  border-color: var(--linha-viva);
-  color: var(--pergaminho);
+  border-color: var(--line-bright);
+  color: var(--parchment);
 }
 
-.btn-bronze:hover { border-color: var(--bronze); color: var(--bronze-cl); }
+.btn-bronze:hover { border-color: var(--bronze); color: var(--bronze-light); }
 
-.btn-largo { width: 100%; }
+.btn-wide { width: 100%; }
 .btn-mini  { padding: 0.6rem 1.1rem; font-size: 0.7rem; letter-spacing: 0.14em; }
 
 /* ── 7. barra de leitura + cabecalho ─────────────────────────────── */
-.progresso {
+.progress {
   position: fixed;
   inset-inline: 0;
   top: 0;
@@ -242,23 +242,23 @@ section { position: relative; }
   height: 2px;
   transform: scaleX(0);
   transform-origin: left;
-  background: linear-gradient(to right, var(--sangue), var(--bronze));
+  background: linear-gradient(to right, var(--blood), var(--bronze));
 }
 
 /* Safari 26 no iPhone pinta a area de status e a barra do navegador com
    o background-color das barras fixas coladas na borda; cor opaca e sem
    backdrop-filter para a amostra bater com o fundo */
 
-.topo {
+.top {
   position: sticky;
   top: 0;
   z-index: 50;
   padding-top: env(safe-area-inset-top);
-  background: var(--breu);
-  border-bottom: 1px solid var(--linha);
+  background: var(--pitch);
+  border-bottom: 1px solid var(--line);
 }
 
-.topo-interno {
+.top-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -266,15 +266,15 @@ section { position: relative; }
   min-height: 4.25rem;
 }
 
-.marca {
+.brand {
   display: flex;
   align-items: center;
   gap: 0.7rem;
   text-decoration: none;
 }
 
-.marca-nome {
-  font-family: var(--titulo);
+.brand-name {
+  font-family: var(--heading);
   font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.24em;
@@ -282,50 +282,50 @@ section { position: relative; }
 }
 
 /* relogio compacto que vive no cabecalho */
-.topo-relogio {
+.top-clock {
   display: none;
   align-items: baseline;
   gap: 0.55rem;
-  font-family: var(--titulo);
+  font-family: var(--heading);
   font-size: 0.9rem;
   letter-spacing: 0.1em;
-  color: var(--bronze-cl);
+  color: var(--bronze-light);
 }
 
-.topo-relogio small {
+.top-clock small {
   font-family: var(--serif);
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--tinta-fraca);
+  color: var(--ink-faint);
 }
 
-@media (min-width: 62rem) { .topo-relogio { display: flex; } }
+@media (min-width: 62rem) { .top-clock { display: flex; } }
 
 /* ── 8. brasoes ──────────────────────────────────────────────────── */
 /* escudo heraldico. o recorte vai no filho e a moldura no pai, com o
    mesmo clip, para a borda nao ser comida pelo clip-path. */
-.brasao {
-  --tom: var(--bronze);
+.crest {
+  --tone: var(--bronze);
   display: grid;
   place-items: center;
   padding: 2px;
-  background: linear-gradient(to bottom, var(--tom), transparent 85%);
+  background: linear-gradient(to bottom, var(--tone), transparent 85%);
   clip-path: polygon(0 0, 100% 0, 100% 62%, 50% 100%, 0 62%);
   transition: transform 300ms ease;
 }
 
-.brasao > * {
+.crest > * {
   width: 100%;
   height: 100%;
-  background: var(--couro-alto);
+  background: var(--leather-high);
   clip-path: polygon(0 0, 100% 0, 100% 62%, 50% 100%, 0 62%);
   display: grid;
   place-items: center;
   overflow: hidden;
 }
 
-.brasao img {
+.crest img {
   width: 100%;
   height: 100%;
   object-fit: contain;
@@ -334,9 +334,9 @@ section { position: relative; }
   transform: scale(1.12);
 }
 
-.brasao-mp { --tom: var(--casa-mp); }
-.brasao-nx { --tom: var(--casa-nx); }
-.brasao-ng { --tom: var(--casa-ng); }
+.crest-mp { --tone: var(--house-mp); }
+.crest-nx { --tone: var(--house-nx); }
+.crest-ng { --tone: var(--house-ng); }
 
 /* trio do hero */
 .trio {
@@ -347,7 +347,7 @@ section { position: relative; }
   flex-wrap: wrap;
 }
 
-.trio-casa {
+.trio-house {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -355,27 +355,27 @@ section { position: relative; }
   width: clamp(6rem, 20vw, 9rem);
 }
 
-.trio-casa .brasao {
+.trio-house .crest {
   width: clamp(5rem, 16vw, 7rem);
   aspect-ratio: 1 / 1.12;
 }
 
-.trio-casa:hover .brasao { transform: translateY(-4px); }
+.trio-house:hover .crest { transform: translateY(-4px); }
 
-.trio-nome {
-  font-family: var(--titulo);
+.trio-name {
+  font-family: var(--heading);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   text-align: center;
-  color: var(--tinta);
+  color: var(--ink);
 }
 
-.trio-mais {
-  font-family: var(--titulo);
+.trio-plus {
+  font-family: var(--heading);
   font-size: 1.5rem;
-  color: var(--linha-viva);
+  color: var(--line-bright);
   align-self: center;
   margin-bottom: 2rem;
 }
@@ -384,7 +384,7 @@ section { position: relative; }
 .hero {
   position: relative;
   overflow: hidden;
-  border-bottom: 1px solid var(--linha);
+  border-bottom: 1px solid var(--line);
   padding-block: clamp(3.5rem, 9vw, 6rem) clamp(4rem, 10vw, 6.5rem);
 }
 
@@ -412,7 +412,7 @@ section { position: relative; }
 
 .hero > * { position: relative; z-index: 1; }
 
-.selo-chamada {
+.stamp-call {
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
@@ -420,31 +420,31 @@ section { position: relative; }
   border: 1px solid rgb(192 139 62 / 0.4);
   border-radius: 999px;
   background: rgb(192 139 62 / 0.08);
-  font-family: var(--titulo);
+  font-family: var(--heading);
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--bronze-cl);
+  color: var(--bronze-light);
 }
 
-.selo-chamada .brasa {
+.stamp-call .ember {
   width: 6px;
   height: 6px;
   border-radius: 999px;
-  background: var(--brasa);
+  background: var(--ember);
   box-shadow: 0 0 8px 2px rgb(226 112 58 / 0.7);
-  animation: pulsar 2.4s ease-in-out infinite;
+  animation: pulse 2.4s ease-in-out infinite;
 }
 
-@keyframes pulsar {
+@keyframes pulse {
   0%, 100% { opacity: 1;   transform: scale(1); }
   50%      { opacity: 0.4; transform: scale(0.8); }
 }
 
 .hero h1 { margin-top: 1.6rem; }
 
-.hero-linha {
+.hero-line {
   display: block;
   font-size: 0.42em;
   letter-spacing: 0.3em;
@@ -456,10 +456,10 @@ section { position: relative; }
   max-width: 40rem;
   margin: 1.6rem auto 0;
   font-size: clamp(1.02rem, 2.2vw, 1.2rem);
-  color: var(--tinta);
+  color: var(--ink);
 }
 
-.hero-acoes {
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.85rem;
@@ -467,179 +467,138 @@ section { position: relative; }
   margin-top: 2.4rem;
 }
 
-/* ── 10. contador + lote ─────────────────────────────────────────── */
-.urgencia {
+/* ── 10. contador ─────────────────────────────────────────── */
+.urgency {
   display: grid;
   gap: 1.75rem;
   max-width: 40rem;
   margin: 3rem auto 0;
   padding: 1.9rem clamp(1.1rem, 4vw, 2.2rem);
-  background: linear-gradient(var(--couro), var(--breu));
-  border: 1px solid var(--linha);
-  border-radius: var(--raio);
+  background: linear-gradient(var(--leather), var(--pitch));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 }
 
-.urgencia-titulo {
-  font-family: var(--titulo);
+.urgency-title {
+  font-family: var(--heading);
   font-size: 0.68rem;
   font-weight: 700;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--tinta-fraca);
+  color: var(--ink-faint);
   text-align: center;
 }
 
 /* relogio: quatro blocos de pedra com o numero gravado */
-.relogio {
+.clock {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.6rem;
   margin-top: 0.9rem;
 }
 
-.relogio-bloco {
+.clock-block {
   padding: 0.7rem 0.3rem 0.6rem;
-  background: var(--couro-alto);
-  border: 1px solid var(--linha);
-  border-radius: var(--raio);
+  background: var(--leather-high);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   text-align: center;
   box-shadow: inset 0 2px 10px rgb(0 0 0 / 0.5);
 }
 
-.relogio-num {
+.clock-num {
   display: block;
-  font-family: var(--titulo);
+  font-family: var(--heading);
   font-size: clamp(1.6rem, 6vw, 2.3rem);
   font-weight: 700;
   line-height: 1;
-  color: var(--pergaminho);
+  color: var(--parchment);
   font-variant-numeric: tabular-nums;
 }
 
-.relogio-rot {
+.clock-label {
   display: block;
   margin-top: 0.4rem;
   font-size: 0.6rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--tinta-fraca);
-}
-
-/* barra do lote */
-.lote-topo {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 0.6rem;
-}
-
-.lote-restam {
-  font-family: var(--titulo);
-  font-size: 0.95rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--bronze-cl);
-}
-
-.lote-trilho {
-  height: 8px;
-  background: var(--couro-alto);
-  border: 1px solid var(--linha);
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.lote-cheio {
-  height: 100%;
-  width: 0;
-  border-radius: 999px;
-  background: linear-gradient(to right, var(--sangue), var(--brasa));
-  box-shadow: 0 0 12px rgb(226 112 58 / 0.5);
-  transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.lote-nota {
-  margin-top: 0.6rem;
-  font-size: 0.78rem;
-  color: var(--tinta-fraca);
-  text-align: center;
+  color: var(--ink-faint);
 }
 
 /* ── 11. as tres casas ───────────────────────────────────────────── */
-.casas {
+.houses {
   display: grid;
   gap: 1.4rem;
   margin-top: 3.5rem;
 }
 
-@media (min-width: 56rem) { .casas { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 56rem) { .houses { grid-template-columns: repeat(3, 1fr); } }
 
-.casa {
-  --tom: var(--bronze);
+.house {
+  --tone: var(--bronze);
   display: flex;
   flex-direction: column;
   padding: 2rem 1.9rem;
-  background: var(--couro);
-  border: 1px solid var(--linha);
-  border-radius: var(--raio);
+  background: var(--leather);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   transition: border-color 260ms ease, transform 260ms ease;
 }
 
-.casa:hover { border-color: color-mix(in srgb, var(--tom) 45%, transparent); transform: translateY(-3px); }
+.house:hover { border-color: color-mix(in srgb, var(--tone) 45%, transparent); transform: translateY(-3px); }
 
-.casa-mp { --tom: var(--casa-mp); }
-.casa-nx { --tom: var(--casa-nx); }
-.casa-ng { --tom: var(--casa-ng); }
+.house-mp { --tone: var(--house-mp); }
+.house-nx { --tone: var(--house-nx); }
+.house-ng { --tone: var(--house-ng); }
 
-.casa-topo {
+.house-top {
   display: flex;
   align-items: center;
   gap: 1.1rem;
 }
 
-.casa-topo .brasao { width: 3.6rem; aspect-ratio: 1 / 1.12; flex: none; }
+.house-top .crest { width: 3.6rem; aspect-ratio: 1 / 1.12; flex: none; }
 
-.casa-rotulo {
-  font-family: var(--titulo);
+.house-label {
+  font-family: var(--heading);
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--tom);
+  color: var(--tone);
 }
 
-.casa h3 { margin-top: 0.25rem; }
+.house h3 { margin-top: 0.25rem; }
 
-.casa-desc { margin-top: 1.3rem; color: var(--tinta); font-size: 0.98rem; }
+.house-desc { margin-top: 1.3rem; color: var(--ink); font-size: 0.98rem; }
 
-.casa-lista {
+.house-list {
   list-style: none;
   margin: 1.3rem 0 0;
   padding: 0;
   display: grid;
   gap: 0.6rem;
   font-size: 0.88rem;
-  color: var(--tinta);
+  color: var(--ink);
 }
 
-.casa-lista li { display: flex; gap: 0.7rem; }
-.casa-lista li::before { content: "◆"; color: var(--tom); font-size: 0.55rem; line-height: 1.9; flex: none; }
+.house-list li { display: flex; gap: 0.7rem; }
+.house-list li::before { content: "◆"; color: var(--tone); font-size: 0.55rem; line-height: 1.9; flex: none; }
 
-.casa-valor {
+.house-value {
   margin-top: auto;
   padding-top: 1.4rem;
-  border-top: 1px solid var(--linha);
+  border-top: 1px solid var(--line);
   font-size: 0.82rem;
-  color: var(--tinta-fraca);
+  color: var(--ink-faint);
 }
 
-.casa-valor b { color: var(--pergaminho); font-weight: 600; }
+.house-value b { color: var(--parchment); font-weight: 600; }
 
 /* ── 12. o selo ──────────────────────────────────────────────────── */
-.lacre { text-align: center; }
+.seal { text-align: center; }
 
-.selo {
+.stamp {
   position: relative;
   width: clamp(8rem, 26vw, 11rem);
   aspect-ratio: 1;
@@ -656,35 +615,35 @@ section { position: relative; }
    corte e um triangulo que sai do centro e se abre por 120 graus; com
    os pontos longe, o triangulo cobre o circulo inteiro dentro da fatia,
    incluindo os cantos da caixa. */
-.selo-terco {
+.stamp-third {
   position: absolute;
   inset: 0;
   opacity: 0.38;
   transition: transform 1000ms cubic-bezier(0.34, 1.1, 0.4, 1), opacity 800ms ease;
 }
 
-.selo-terco:nth-child(1) {
+.stamp-third:nth-child(1) {
   clip-path: polygon(50% 50%, -166% -75%, 266% -75%);
   transform: translate(0, -44%) rotate(-13deg);
 }
 
-.selo-terco:nth-child(2) {
+.stamp-third:nth-child(2) {
   clip-path: polygon(50% 50%, 266% -75%, 50% 300%);
   transform: translate(38%, 23%) rotate(13deg);
 }
 
-.selo-terco:nth-child(3) {
+.stamp-third:nth-child(3) {
   clip-path: polygon(50% 50%, 50% 300%, -166% -75%);
   transform: translate(-38%, 23%) rotate(-13deg);
 }
 
-.selo-disco {
+.stamp-disc {
   display: grid;
   place-items: center;
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  font-family: var(--titulo);
+  font-family: var(--heading);
   font-size: clamp(1.9rem, 6vw, 2.7rem);
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -697,78 +656,78 @@ section { position: relative; }
 }
 
 /* Selado: as tres pecas se encaixam e ficam. O lacre nao some mais. */
-.selo.selado .selo-terco {
+.stamp.sealed .stamp-third {
   transform: none;
   opacity: 1;
 }
 
 /* a batida da cera quando as tres partes se encontram; o atraso espera
    as pecas chegarem antes de dar o baque */
-.selo.selado .selo-disco {
-  animation: cravar 520ms 900ms ease-out both;
+.stamp.sealed .stamp-disc {
+  animation: press 520ms 900ms ease-out both;
 }
 
-@keyframes cravar {
+@keyframes press {
   0%   { transform: scale(1);     }
   38%  { transform: scale(1.055); }
   100% { transform: scale(1);     }
 }
 
 /* aviso que troca quando o selo se quebra */
-.lacre-aviso {
+.seal-notice {
   margin-top: 1.8rem;
-  font-family: var(--titulo);
+  font-family: var(--heading);
   font-size: 0.7rem;
   letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--tinta-fraca);
+  color: var(--ink-faint);
   transition: opacity 500ms ease, color 500ms ease;
 }
 
-.lacre.selado .lacre-aviso { color: var(--bronze-cl); }
+.seal.sealed .seal-notice { color: var(--bronze-light); }
 
 /* ── 13. os pactos (pacotes) ─────────────────────────────────────── */
-.pactos {
+.pacts {
   display: grid;
   gap: 1.4rem;
   margin-top: 3.5rem;
   align-items: start;
 }
 
-@media (min-width: 60rem) { .pactos { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 60rem) { .pacts { grid-template-columns: repeat(3, 1fr); } }
 
-.pacto {
+.pact {
   position: relative;
   display: flex;
   flex-direction: column;
   padding: 2.2rem 1.9rem;
-  background: linear-gradient(var(--couro), var(--breu));
-  border: 1px solid var(--linha);
-  border-radius: var(--raio);
+  background: linear-gradient(var(--leather), var(--pitch));
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   transition: border-color 260ms ease, transform 260ms ease, box-shadow 260ms ease;
 }
 
-.pacto:hover {
-  border-color: var(--linha-viva);
+.pact:hover {
+  border-color: var(--line-bright);
   transform: translateY(-4px);
 }
 
-.pacto-honra {
+.pact-honor {
   border-color: rgb(192 139 62 / 0.55);
   box-shadow: 0 26px 60px -32px rgb(192 139 62 / 0.7), inset 0 1px 0 rgb(226 185 105 / 0.14);
 }
 
-.pacto-honra:hover { border-color: var(--bronze); }
+.pact-honor:hover { border-color: var(--bronze); }
 
-.pacto-fita {
+.pact-ribbon {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 0.32rem 1rem;
-  background: linear-gradient(var(--bronze-cl), var(--bronze));
+  background: linear-gradient(var(--bronze-light), var(--bronze));
   border-radius: 999px;
-  font-family: var(--titulo);
+  font-family: var(--heading);
   font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -777,27 +736,27 @@ section { position: relative; }
   white-space: nowrap;
 }
 
-.pacto h3 { margin-top: 0.6rem; font-size: 1.75rem; }
+.pact h3 { margin-top: 0.6rem; font-size: 1.75rem; }
 
-.pacto-lema {
+.pact-motto {
   margin-top: 0.8rem;
   font-size: 0.92rem;
-  color: var(--tinta);
+  color: var(--ink);
   font-style: italic;
   min-height: 3.2em;
 }
 
 /* itens inclusos, com o valor de cada um a direita */
-.pacto-itens {
+.pact-items {
   list-style: none;
   margin: 1.6rem 0 0;
   padding: 1.1rem 0;
-  border-block: 1px solid var(--linha);
+  border-block: 1px solid var(--line);
   display: grid;
   gap: 0.85rem;
 }
 
-.pacto-item {
+.pact-item {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -805,181 +764,181 @@ section { position: relative; }
   font-size: 0.9rem;
 }
 
-.pacto-item span:first-child { display: flex; gap: 0.6rem; }
-.pacto-item span:first-child::before { content: "✦"; color: var(--bronze); font-size: 0.7rem; flex: none; }
+.pact-item span:first-child { display: flex; gap: 0.6rem; }
+.pact-item span:first-child::before { content: "✦"; color: var(--bronze); font-size: 0.7rem; flex: none; }
 
-.pacto-item-preco { color: var(--tinta-fraca); font-size: 0.8rem; white-space: nowrap; }
+.pact-item-price { color: var(--ink-faint); font-size: 0.8rem; white-space: nowrap; }
 
-.pacto-item-ausente { color: var(--tinta-fraca); opacity: 0.55; }
-.pacto-item-ausente span:first-child::before { content: "—"; color: var(--tinta-fraca); }
+.pact-item-missing { color: var(--ink-faint); opacity: 0.55; }
+.pact-item-missing span:first-child::before { content: "—"; color: var(--ink-faint); }
 
-.pacto-item-joia span:first-child { color: var(--pergaminho); font-weight: 600; }
-.pacto-item-joia span:first-child::before { color: var(--casa-ng); }
+.pact-item-gem span:first-child { color: var(--parchment); font-weight: 600; }
+.pact-item-gem span:first-child::before { color: var(--house-ng); }
 
-.pacto-preco { margin-top: 1.6rem; }
+.pact-price { margin-top: 1.6rem; }
 
-.pacto-preco-rot {
+.pact-price-label {
   font-size: 0.68rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--tinta-fraca);
+  color: var(--ink-faint);
 }
 
-.pacto-preco-val {
+.pact-price-value {
   display: block;
   margin-top: 0.35rem;
-  font-family: var(--titulo);
+  font-family: var(--heading);
   font-size: 2.6rem;
   font-weight: 700;
   line-height: 1;
-  color: var(--pergaminho);
+  color: var(--parchment);
 }
 
-.pacto-honra .pacto-preco-val { color: var(--bronze-cl); }
-.pacto-preco-val small { font-size: 0.55em; }
+.pact-honor .pact-price-value { color: var(--bronze-light); }
+.pact-price-value small { font-size: 0.55em; }
 
-.pacto .btn { margin-top: 1.6rem; }
+.pact .btn { margin-top: 1.6rem; }
 
-.pactos-nota {
+.pacts-note {
   max-width: 44rem;
   margin: 2.4rem auto 0;
   text-align: center;
   font-size: 0.84rem;
-  color: var(--tinta-fraca);
+  color: var(--ink-faint);
   line-height: 1.7;
 }
 
 /* ── 14. assinatura (formulario) ─────────────────────────────────── */
-.assinatura {
+.signature {
   max-width: 40rem;
   margin: 3rem auto 0;
   padding: clamp(1.6rem, 5vw, 2.6rem);
-  background: var(--couro);
-  border: 1px solid var(--linha);
-  border-radius: var(--raio);
+  background: var(--leather);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
 }
 
-.campos { display: grid; gap: 1.2rem; margin-top: 1.8rem; }
+.fields { display: grid; gap: 1.2rem; margin-top: 1.8rem; }
 
-@media (min-width: 40rem) { .campos-duplo { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 40rem) { .fields-double { grid-template-columns: 1fr 1fr; } }
 
-.campo { display: grid; gap: 0.45rem; }
+.field { display: grid; gap: 0.45rem; }
 
-.campo label {
-  font-family: var(--titulo);
+.field label {
+  font-family: var(--heading);
   font-size: 0.66rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--tinta);
+  color: var(--ink);
 }
 
-.campo input,
-.campo select {
+.field input,
+.field select {
   width: 100%;
   padding: 0.85rem 1rem;
-  background: var(--breu);
-  border: 1px solid var(--linha);
-  border-radius: var(--raio);
-  color: var(--pergaminho);
+  background: var(--pitch);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--parchment);
   font-family: var(--serif);
   font-size: 1rem;
   transition: border-color 200ms ease;
 }
 
-.campo input::placeholder { color: var(--tinta-fraca); opacity: 0.7; }
+.field input::placeholder { color: var(--ink-faint); opacity: 0.7; }
 
-.campo input:focus,
-.campo select:focus { outline: none; border-color: var(--bronze); }
+.field input:focus,
+.field select:focus { outline: none; border-color: var(--bronze); }
 
-.campo-dica { font-size: 0.76rem; color: var(--tinta-fraca); }
+.field-hint { font-size: 0.76rem; color: var(--ink-faint); }
 
-.campo-erro { border-color: var(--sangue-cl) !important; }
+.field-error { border-color: var(--blood-light) !important; }
 
-.recado {
+.message {
   margin-top: 1.2rem;
   padding: 0.85rem 1.1rem;
   border: 1px solid;
-  border-radius: var(--raio);
+  border-radius: var(--radius);
   font-size: 0.88rem;
 }
 
-.recado[hidden] { display: none; }
-.recado-erro  { border-color: rgb(200 57 77 / 0.5);  background: rgb(155 36 54 / 0.14); color: #f0b7bf; }
-.recado-ok    { border-color: rgb(192 139 62 / 0.5); background: rgb(192 139 62 / 0.12); color: var(--bronze-cl); }
+.message[hidden] { display: none; }
+.message-error  { border-color: rgb(200 57 77 / 0.5);  background: rgb(155 36 54 / 0.14); color: #f0b7bf; }
+.message-ok    { border-color: rgb(192 139 62 / 0.5); background: rgb(192 139 62 / 0.12); color: var(--bronze-light); }
 
 .btn[aria-busy="true"] { opacity: 0.65; pointer-events: none; }
 
 /* ── 15. passos ──────────────────────────────────────────────────── */
-.passos {
+.steps {
   display: grid;
   gap: 1.2rem;
   margin-top: 3.5rem;
   counter-reset: passo;
 }
 
-@media (min-width: 42rem) { .passos { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 68rem) { .passos { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 42rem) { .steps { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 68rem) { .steps { grid-template-columns: repeat(4, 1fr); } }
 
-.passo {
+.step {
   padding: 1.9rem 1.7rem;
-  background: var(--couro);
-  border: 1px solid var(--linha);
-  border-radius: var(--raio);
+  background: var(--leather);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   counter-increment: passo;
 }
 
-.passo::before {
+.step::before {
   content: counter(passo, upper-roman);
   display: block;
-  font-family: var(--titulo);
+  font-family: var(--heading);
   font-size: 2.4rem;
   font-weight: 700;
   line-height: 1;
-  color: var(--linha-viva);
+  color: var(--line-bright);
 }
 
-.passo-final { border-color: rgb(192 139 62 / 0.45); }
-.passo-final::before { color: var(--bronze-es); }
+.step-final { border-color: rgb(192 139 62 / 0.45); }
+.step-final::before { color: var(--bronze-dark); }
 
-.passo h3 { margin-top: 1rem; font-size: 1.05rem; }
-.passo p  { margin-top: 0.6rem; font-size: 0.9rem; color: var(--tinta); }
+.step h3 { margin-top: 1rem; font-size: 1.05rem; }
+.step p  { margin-top: 0.6rem; font-size: 0.9rem; color: var(--ink); }
 
 /* ── 16. juramentos ──────────────────────────────────────────────── */
-.juramentos {
+.oaths {
   display: grid;
   gap: 1px;
   margin-top: 3rem;
-  background: var(--linha);
-  border: 1px solid var(--linha);
-  border-radius: var(--raio);
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   overflow: hidden;
 }
 
-@media (min-width: 52rem) { .juramentos { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 52rem) { .oaths { grid-template-columns: repeat(3, 1fr); } }
 
-.juramento {
+.oath {
   display: flex;
   gap: 1.1rem;
   padding: 1.7rem;
-  background: var(--couro);
+  background: var(--leather);
 }
 
-.juramento svg { flex: none; width: 1.35rem; height: 1.35rem; color: var(--bronze); margin-top: 0.2rem; }
-.juramento h3  { font-size: 0.98rem; }
-.juramento p   { margin-top: 0.45rem; font-size: 0.84rem; color: var(--tinta); line-height: 1.65; }
+.oath svg { flex: none; width: 1.35rem; height: 1.35rem; color: var(--bronze); margin-top: 0.2rem; }
+.oath h3  { font-size: 0.98rem; }
+.oath p   { margin-top: 0.45rem; font-size: 0.84rem; color: var(--ink); line-height: 1.65; }
 
 /* ── 17. duvidas ─────────────────────────────────────────────────── */
-.duvidas {
+.questions {
   max-width: 46rem;
   margin: 3rem auto 0;
-  border-block: 1px solid var(--linha);
+  border-block: 1px solid var(--line);
 }
 
-.duvida { border-bottom: 1px solid var(--linha); }
-.duvida:last-child { border-bottom: 0; }
+.question { border-bottom: 1px solid var(--line); }
+.question:last-child { border-bottom: 0; }
 
-.duvida summary {
+.question summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -987,17 +946,17 @@ section { position: relative; }
   padding: 1.35rem 0;
   cursor: pointer;
   list-style: none;
-  font-family: var(--titulo);
+  font-family: var(--heading);
   font-size: 1rem;
   font-weight: 600;
-  color: var(--pergaminho);
+  color: var(--parchment);
   transition: color 200ms ease;
 }
 
-.duvida summary::-webkit-details-marker { display: none; }
-.duvida summary:hover { color: var(--bronze-cl); }
+.question summary::-webkit-details-marker { display: none; }
+.question summary:hover { color: var(--bronze-light); }
 
-.duvida summary::after {
+.question summary::after {
   content: "";
   flex: none;
   width: 11px;
@@ -1008,9 +967,9 @@ section { position: relative; }
   transition: transform 260ms ease;
 }
 
-.duvida[open] summary::after { transform: rotate(-135deg) translateY(-2px); }
+.question[open] summary::after { transform: rotate(-135deg) translateY(-2px); }
 
-.duvida p { padding-bottom: 1.5rem; color: var(--tinta); font-size: 0.95rem; }
+.question p { padding-bottom: 1.5rem; color: var(--ink); font-size: 0.95rem; }
 
 /* ── 18. chamada final ───────────────────────────────────────────── */
 .final {
@@ -1020,9 +979,9 @@ section { position: relative; }
   margin: 3.5rem auto 0;
   padding: clamp(2.6rem, 7vw, 4rem) clamp(1.4rem, 5vw, 3rem);
   text-align: center;
-  background: var(--couro);
+  background: var(--leather);
   border: 1px solid rgb(192 139 62 / 0.35);
-  border-radius: var(--raio);
+  border-radius: var(--radius);
 }
 
 .final::before {
@@ -1038,35 +997,35 @@ section { position: relative; }
 }
 
 .final > * { position: relative; }
-.final p { margin: 1.1rem auto 0; max-width: 34rem; color: var(--tinta); }
-.final .hero-acoes { margin-top: 2rem; }
+.final p { margin: 1.1rem auto 0; max-width: 34rem; color: var(--ink); }
+.final .hero-actions { margin-top: 2rem; }
 
 /* ── 19. rodape ──────────────────────────────────────────────────── */
-.rodape {
+.footer {
   margin-top: 0;
   padding-block: 3.5rem 8rem;
-  border-top: 1px solid var(--linha);
+  border-top: 1px solid var(--line);
   text-align: center;
   font-size: 0.8rem;
-  color: var(--tinta-fraca);
+  color: var(--ink-faint);
   line-height: 1.9;
 }
 
-@media (min-width: 62rem) { .rodape { padding-bottom: 3.5rem; } }
+@media (min-width: 62rem) { .footer { padding-bottom: 3.5rem; } }
 
-.rodape a { color: var(--tinta); text-decoration: none; }
-.rodape a:hover { color: var(--bronze-cl); }
+.footer a { color: var(--ink); text-decoration: none; }
+.footer a:hover { color: var(--bronze-light); }
 
-.rodape-marca {
-  font-family: var(--titulo);
+.footer-brand {
+  font-family: var(--heading);
   font-size: 0.8rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: var(--tinta);
+  color: var(--ink);
 }
 
 /* ── 20. barra fixa no celular ───────────────────────────────────── */
-.barra-fixa {
+.fixed-bar {
   position: fixed;
   inset-inline: 0;
   bottom: 0;
@@ -1076,26 +1035,26 @@ section { position: relative; }
   justify-content: space-between;
   gap: 1rem;
   padding: 0.75rem 1.1rem calc(0.75rem + env(safe-area-inset-bottom));
-  background: var(--breu);
-  border-top: 1px solid var(--linha);
+  background: var(--pitch);
+  border-top: 1px solid var(--line);
 }
 
-@media (min-width: 62rem) { .barra-fixa { display: none; } }
+@media (min-width: 62rem) { .fixed-bar { display: none; } }
 
-.barra-rot {
+.bar-label {
   font-size: 0.62rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--tinta-fraca);
+  color: var(--ink-faint);
 }
 
-.barra-val {
+.bar-value {
   display: block;
-  font-family: var(--titulo);
+  font-family: var(--heading);
   font-size: 1.15rem;
   font-weight: 700;
   line-height: 1.2;
-  color: var(--bronze-cl);
+  color: var(--bronze-light);
   font-variant-numeric: tabular-nums;
 }
 
@@ -1106,12 +1065,12 @@ section { position: relative; }
   transition: opacity 750ms ease, transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.reveal.visivel { opacity: 1; transform: none; }
+.reveal.visible { opacity: 1; transform: none; }
 
 /* escalonamento leve entre irmaos */
-.reveal[data-atraso="1"] { transition-delay: 110ms; }
-.reveal[data-atraso="2"] { transition-delay: 220ms; }
-.reveal[data-atraso="3"] { transition-delay: 330ms; }
+.reveal[data-delay="1"] { transition-delay: 110ms; }
+.reveal[data-delay="2"] { transition-delay: 220ms; }
+.reveal[data-delay="3"] { transition-delay: 330ms; }
 
 /* ── 22. quem prefere menos movimento ────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
@@ -1129,7 +1088,7 @@ section { position: relative; }
 /* ── 23. seta propria do select ──────────────────────────────────── */
 /* o select nativo herda a seta do sistema, que destoa da pagina; aqui
    ela vira um losango de bronze desenhado no proprio fundo. */
-.campo select {
+.field select {
   appearance: none;
   padding-right: 2.6rem;
   background-image:
@@ -1141,33 +1100,32 @@ section { position: relative; }
   cursor: pointer;
 }
 
-.campo select option { background: var(--breu); color: var(--pergaminho); }
+.field select option { background: var(--pitch); color: var(--parchment); }
 
 /* ── 24. pacto encerrado ─────────────────────────────────────────── */
 /* quando o prazo vence a pagina nao mostra zeros piscando: ela assume
    o encerramento e tira a acao dos botoes de compra. */
-.pacto-encerrado {
+.pact-closed {
   grid-column: 1 / -1;
   font-family: var(--serif);
   font-size: 0.95rem;
   line-height: 1.7;
-  color: var(--tinta);
+  color: var(--ink);
 }
 
-[data-pacto="encerrado"] .btn-selo {
-  background: var(--couro-alto);
-  border-color: var(--linha);
-  color: var(--tinta-fraca);
+[data-pact="closed"] .btn-stamp {
+  background: var(--leather-high);
+  border-color: var(--line);
+  color: var(--ink-faint);
   box-shadow: none;
   pointer-events: none;
 }
 
-[data-pacto="encerrado"] .lote-cheio { background: var(--linha-viva); box-shadow: none; }
-[data-pacto="encerrado"] .selo-chamada .brasa { animation: none; background: var(--tinta-fraca); box-shadow: none; }
+[data-pact="closed"] .stamp-call .ember { animation: none; background: var(--ink-faint); box-shadow: none; }
 
 /* o WhatsApp continua clicavel: e a unica saida que sobra */
-[data-pacto="encerrado"] a[href*="wa.me"].btn-selo {
-  background: linear-gradient(175deg, var(--sangue-cl), var(--sangue) 60%, #7a1928);
+[data-pact="closed"] a[href*="wa.me"].btn-stamp {
+  background: linear-gradient(175deg, var(--blood-light), var(--blood) 60%, #7a1928);
   border-color: rgb(224 180 100 / 0.45);
   color: #fbeedd;
   pointer-events: auto;
@@ -1179,51 +1137,47 @@ section { position: relative; }
    ponto os losangos saem e os brasoes dividem a largura por igual. */
 @media (max-width: 30rem) {
   .trio { gap: 0.5rem; flex-wrap: nowrap; }
-  .trio-mais { display: none; }
+  .trio-plus { display: none; }
 
-  .trio-casa {
+  .trio-house {
     width: auto;
     flex: 1 1 0;
     min-width: 0;
     gap: 0.6rem;
   }
 
-  .trio-casa .brasao { width: min(100%, 5.5rem); }
-  .trio-nome { font-size: 0.6rem; letter-spacing: 0.1em; }
+  .trio-house .crest { width: min(100%, 5.5rem); }
+  .trio-name { font-size: 0.6rem; letter-spacing: 0.1em; }
 
   /* a linha de marcas acima do titulo fica larga demais com o
      espacamento cheio e quebra feio em duas linhas */
-  .hero-linha { font-size: 0.34em; letter-spacing: 0.16em; }
-  .selo-chamada { letter-spacing: 0.14em; }
+  .hero-line { font-size: 0.34em; letter-spacing: 0.16em; }
+  .stamp-call { letter-spacing: 0.14em; }
 
-  .relogio { gap: 0.4rem; }
-  .relogio-bloco { padding-inline: 0.15rem; }
+  .clock { gap: 0.4rem; }
+  .clock-block { padding-inline: 0.15rem; }
 
-  .urgencia { gap: 1.4rem; padding-inline: 1rem; }
+  .urgency { gap: 1.4rem; padding-inline: 1rem; }
 }
 
 /* brasao pequeno do cabecalho, com o mesmo "III" do selo de lacre */
-.marca-brasao { width: 1.9rem; aspect-ratio: 1 / 1.12; }
+.brand-crest { width: 1.9rem; aspect-ratio: 1 / 1.12; }
 
-.marca-brasao > span {
-  font-family: var(--titulo);
+.brand-crest > span {
+  font-family: var(--heading);
   font-size: 0.52rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--bronze-cl);
+  color: var(--bronze-light);
   padding-bottom: 0.5em;   /* o escudo afina embaixo: o texto sobe um pouco */
 }
 
-/* o rotulo do lote e o "restam N pactos" nao cabem lado a lado num
-   celular estreito: os dois quebram no meio. Empilhados ficam legiveis. */
 @media (max-width: 30rem) {
-  .lote-topo { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
-  .urgencia-titulo { letter-spacing: 0.18em; }
-  .lote-nota { text-align: left; }
+  .urgency-title { letter-spacing: 0.18em; }
 }
 
 /* quem prefere menos movimento ve o lacre ja formado, sem a juncao */
 @media (prefers-reduced-motion: reduce) {
-  .selo-terco { transform: none; opacity: 1; }
-  .selo.selado .selo-disco { animation: none; }
+  .stamp-third { transform: none; opacity: 1; }
+  .stamp.sealed .stamp-disc { animation: none; }
 }

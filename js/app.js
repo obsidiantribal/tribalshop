@@ -1,38 +1,33 @@
-/* Tribal Shop — filtros de categoria e lightbox de artes */
+document.getElementById('year').textContent = new Date().getFullYear();
 
-document.getElementById('ano').textContent = new Date().getFullYear();
-
-/* ── filtros ── */
 const grid = document.getElementById('grid');
 const cards = [...grid.children];
-const vazio = document.getElementById('vazio');
+const empty = document.getElementById('empty');
 
-/* contador do hero acompanha o número real de cards */
-document.getElementById('qtd-servicos').textContent = cards.length;
+document.getElementById('service-count').textContent = cards.length;
 
-document.getElementById('filtros').addEventListener('click', e => {
+document.getElementById('filters').addEventListener('click', e => {
   const btn = e.target.closest('[data-filter]');
   if (!btn) return;
 
-  const cat = btn.dataset.filter;
-  document.querySelectorAll('#filtros .chip').forEach(c => c.setAttribute('aria-pressed', c === btn));
+  const category = btn.dataset.filter;
+  document.querySelectorAll('#filters .chip').forEach(c => c.setAttribute('aria-pressed', c === btn));
 
-  let visiveis = 0;
+  let visible = 0;
   cards.forEach(card => {
-    const mostra = cat === 'all' || card.dataset.cat === cat;
-    card.classList.toggle('hidden', !mostra);
-    visiveis += mostra;
+    const shown = category === 'all' || card.dataset.cat === category;
+    card.classList.toggle('hidden', !shown);
+    visible += shown;
   });
 
-  grid.classList.toggle('hidden', !visiveis);
-  vazio.classList.toggle('hidden', !!visiveis);
+  grid.classList.toggle('hidden', !visible);
+  empty.classList.toggle('hidden', !!visible);
 });
 
-/* ── lightbox ── */
 const lb = document.getElementById('lightbox');
 const lbBody = document.getElementById('lb-body');
 
-const fecharLb = () => {
+const closeLb = () => {
   lb.classList.replace('flex', 'hidden');
   lbBody.replaceChildren();
   document.body.style.overflow = '';
@@ -52,6 +47,6 @@ document.addEventListener('click', e => {
   document.body.style.overflow = 'hidden';
 });
 
-document.getElementById('lb-close').addEventListener('click', fecharLb);
-lb.addEventListener('click', e => e.target === lb && fecharLb());
-document.addEventListener('keydown', e => e.key === 'Escape' && !lb.classList.contains('hidden') && fecharLb());
+document.getElementById('lb-close').addEventListener('click', closeLb);
+lb.addEventListener('click', e => e.target === lb && closeLb());
+document.addEventListener('keydown', e => e.key === 'Escape' && !lb.classList.contains('hidden') && closeLb());

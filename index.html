@@ -38,22 +38,22 @@
 <!-- ═══════════════ HEADER ═══════════════ -->
 <header class="sticky top-0 z-40 border-b border-ink-700/80 bg-ink-950/85 backdrop-blur-md">
   <div class="shell flex h-16 items-center justify-between gap-4">
-    <a href="#topo" class="flex items-center gap-2.5">
+    <a href="#top" class="flex items-center gap-2.5">
       <span class="mark h-9 w-9 text-[19px]" aria-hidden="true">TS</span>
       <span class="font-display text-2xl leading-none tracking-wide">TRIBAL<span class="text-gold-400">SHOP</span></span>
     </a>
 
     <nav class="hidden items-center gap-7 text-sm font-medium text-zinc-400 md:flex">
-      <a href="#servicos" class="transition hover:text-white">Serviços</a>
-      <a href="#como-funciona" class="transition hover:text-white">Como funciona</a>
-      <a href="#duvidas" class="transition hover:text-white">Dúvidas</a>
+      <a href="#services" class="transition hover:text-white">Serviços</a>
+      <a href="#how-it-works" class="transition hover:text-white">Como funciona</a>
+      <a href="#faq" class="transition hover:text-white">Dúvidas</a>
     </nav>
 
-    <a href="#servicos" class="btn-gold !px-4 !py-2 text-xs sm:text-sm">Ver serviços</a>
+    <a href="#services" class="btn-gold !px-4 !py-2 text-xs sm:text-sm">Ver serviços</a>
   </div>
 </header>
 
-<main id="topo">
+<main id="top">
 
 <!-- ═══════════════ HERO ═══════════════ -->
 <section class="relative overflow-hidden border-b border-ink-800">
@@ -73,20 +73,20 @@
     </p>
 
     <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
-      <a href="#servicos" class="btn-gold">
+      <a href="#services" class="btn-gold">
         Explorar serviços
         <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
       </a>
-      <a href="#como-funciona" class="btn-ghost">Como funciona</a>
+      <a href="#how-it-works" class="btn-ghost">Como funciona</a>
     </div>
 
     <dl class="mx-auto mt-14 grid max-w-3xl grid-cols-2 gap-px overflow-hidden rounded-2xl border border-ink-700 bg-ink-700 sm:grid-cols-4">
       <div class="bg-ink-900 px-4 py-5">
-        <dt id="qtd-servicos" class="font-display text-3xl text-gold-400">9</dt>
+        <dt id="service-count" class="font-display text-3xl text-gold-400">9</dt>
         <dd class="mt-1 text-xs text-zinc-500">serviços ativos</dd>
       </div>
       <div class="bg-ink-900 px-4 py-5">
-        <dt class="font-display text-3xl text-gold-400">R$ 3</dt>
+        <dt class="font-display text-3xl text-gold-400">R$ 2,50</dt>
         <dd class="mt-1 text-xs text-zinc-500">a partir de</dd>
       </div>
       <div class="bg-ink-900 px-4 py-5">
@@ -102,7 +102,7 @@
 </section>
 
 <!-- ═══════════════ SERVIÇOS ═══════════════ -->
-<section id="servicos" class="shell py-20 sm:py-24">
+<section id="services" class="shell py-20 sm:py-24">
 
   <div class="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
     <div>
@@ -115,18 +115,18 @@
   </div>
 
   <!-- filtros -->
-  <div id="filtros" class="mt-8 flex flex-wrap gap-2.5">
+  <div id="filters" class="mt-8 flex flex-wrap gap-2.5">
     <button class="chip" data-filter="all" aria-pressed="true">Todos</button>
-    <button class="chip" data-filter="automatize" aria-pressed="false">Automatize</button>
-    <button class="chip" data-filter="evolua" aria-pressed="false">Evolua rápido</button>
-    <button class="chip" data-filter="aprenda" aria-pressed="false">Aprenda</button>
-    <button class="chip" data-filter="recursos" aria-pressed="false">Recursos</button>
+    <button class="chip" data-filter="automate" aria-pressed="false">Automatize</button>
+    <button class="chip" data-filter="grow" aria-pressed="false">Evolua rápido</button>
+    <button class="chip" data-filter="learn" aria-pressed="false">Aprenda</button>
+    <button class="chip" data-filter="resources" aria-pressed="false">Recursos</button>
   </div>
 
   <div id="grid" class="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
 
     <!-- ── 1. MULTI PRO (destaque) ── -->
-    <article class="card sm:col-span-2" data-cat="automatize">
+    <article class="card sm:col-span-2" data-cat="automate">
       <div class="relative aspect-[1824/805] overflow-hidden bg-ink-800">
         <img src="img/multipro-card.webp" alt="Multi Pro: centenas de contas jogando sozinhas, com o PC desligado" loading="lazy" class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]">
         <button type="button" data-art="img/multipro-card.webp" class="absolute bottom-3 right-3 rounded-lg border border-white/15 bg-black/55 px-2.5 py-1.5 text-[11px] font-semibold text-white backdrop-blur transition hover:border-gold-500/60">Ver arte</button>
@@ -163,7 +163,7 @@
     </article>
 
     <!-- ── 2. COMPRA DE CONTAS ── -->
-    <article class="card" data-cat="automatize">
+    <article class="card" data-cat="automate">
       <div class="relative aspect-[4/3] overflow-hidden bg-ink-800">
         <img src="img/compra-contas.webp" alt="Arte promocional do serviço Compra de Contas" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 hover:scale-[1.04]">
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-900 to-transparent"></div>
@@ -188,7 +188,7 @@
     </article>
 
     <!-- ── 3. NEXUS SCRIPTS ── -->
-    <article class="card" data-cat="automatize">
+    <article class="card" data-cat="automate">
       <div class="relative aspect-[4/3] overflow-hidden bg-ink-800">
         <img src="img/nexus.jpg" alt="Arte promocional do Nexus Scripts" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 hover:scale-[1.04]">
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-900 to-transparent"></div>
@@ -218,7 +218,7 @@
     </article>
 
     <!-- ── 4. MAR DE BÁRBARAS ── -->
-    <article class="card" data-cat="evolua">
+    <article class="card" data-cat="grow">
       <div class="relative aspect-[4/3] overflow-hidden bg-ink-800">
         <img src="img/marbb-arte.jpg" alt="Arte promocional do serviço Mar de Bárbaras" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 hover:scale-[1.04]">
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-900 to-transparent"></div>
@@ -247,7 +247,7 @@
     </article>
 
     <!-- ── 5. CONTA PRO ── -->
-    <article class="card" data-cat="evolua">
+    <article class="card" data-cat="grow">
       <div class="relative aspect-[4/3] overflow-hidden bg-ink-800">
         <img src="img/conta-pro.jpg" alt="Arte promocional do serviço Conta PRO" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 hover:scale-[1.04]">
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-900 to-transparent"></div>
@@ -277,7 +277,7 @@
     </article>
 
     <!-- ── 6. RAIO X DA CONTA ── -->
-    <article class="card" data-cat="evolua">
+    <article class="card" data-cat="grow">
       <div class="relative aspect-[4/3] overflow-hidden bg-ink-800">
         <img src="img/raio-x.jpg" alt="Arte promocional do serviço Raio X da Conta" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 hover:scale-[1.04]">
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-900 to-transparent"></div>
@@ -307,7 +307,7 @@
     </article>
 
     <!-- ── 7. CURSO DE TRIBAL WARS ── -->
-    <article class="card" data-cat="aprenda">
+    <article class="card" data-cat="learn">
       <div class="relative aspect-[4/3] overflow-hidden bg-ink-800">
         <img src="img/curso-tw.jpg" alt="Arte promocional do Curso de Tribal Wars" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 hover:scale-[1.04]">
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-900 to-transparent"></div>
@@ -339,7 +339,7 @@
     </article>
 
     <!-- ── 8. BARRA PRO ── -->
-    <article class="card" data-cat="aprenda">
+    <article class="card" data-cat="learn">
       <div class="relative aspect-[4/3] overflow-hidden bg-ink-800">
         <img src="img/barra-pro.jpg" alt="Arte promocional do pacote Barra PRO de scripts" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 hover:scale-[1.04]">
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-900 to-transparent"></div>
@@ -372,7 +372,7 @@
     </article>
 
     <!-- ── 9. NAGA STORE ── -->
-    <article class="card lg:col-span-3 lg:min-h-[15rem] lg:flex-row" data-cat="recursos">
+    <article class="card lg:col-span-3 lg:min-h-[15rem] lg:flex-row" data-cat="resources">
       <div class="relative aspect-[4/3] overflow-hidden bg-ink-800 lg:aspect-auto lg:w-[36%] lg:shrink-0">
         <img src="img/naga-store.jpg" alt="Arte promocional da Naga Store, pontos premium" loading="lazy" class="h-full w-full object-cover object-top transition duration-500 hover:scale-[1.04]">
         <div class="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-ink-900 to-transparent lg:inset-0 lg:h-auto lg:bg-gradient-to-r lg:from-transparent lg:to-ink-900"></div>
@@ -408,11 +408,11 @@
 
   </div>
 
-  <p id="vazio" class="hidden py-16 text-center text-sm text-zinc-500">Nenhum serviço nesta categoria.</p>
+  <p id="empty" class="hidden py-16 text-center text-sm text-zinc-500">Nenhum serviço nesta categoria.</p>
 </section>
 
 <!-- ═══════════════ COMO FUNCIONA ═══════════════ -->
-<section id="como-funciona" class="border-y border-ink-800 bg-ink-900/40">
+<section id="how-it-works" class="border-y border-ink-800 bg-ink-900/40">
   <div class="shell py-20 sm:py-24">
     <div class="text-center">
       <p class="eyebrow">Como funciona</p>
@@ -444,7 +444,7 @@
 </section>
 
 <!-- ═══════════════ DÚVIDAS ═══════════════ -->
-<section id="duvidas" class="shell py-20 sm:py-24">
+<section id="faq" class="shell py-20 sm:py-24">
 
   <div class="text-center">
     <p class="eyebrow">Dúvidas</p>
@@ -510,7 +510,7 @@
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer class="border-t border-ink-800 bg-ink-950">
   <div class="shell flex flex-col items-center gap-2 py-10 text-center text-xs text-zinc-600">
-    <p>© <span id="ano">2026</span> Tribal Shop. Todos os direitos reservados.</p>
+    <p>© <span id="year">2026</span> Tribal Shop. Todos os direitos reservados.</p>
     <p>Não somos afiliados à InnoGames. Tribal Wars é marca registrada de seus respectivos donos.</p>
   </div>
 </footer>
