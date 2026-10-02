@@ -1,267 +1,228 @@
-const PACTO = {
-  expiraEm: '2026-10-14T23:59:59-03:00',
-  loteTotal: 50,
-  loteAssinados: 12,
+const PACT = {
+  expiresAt: '2026-10-14T23:59:59-03:00',
   checkoutUrl: 'https://multipro-indol.vercel.app/api/pacto/checkout',
 };
 
-const $  = (sel, raiz = document) => raiz.querySelector(sel);
-const $$ = (sel, raiz = document) => [...raiz.querySelectorAll(sel)];
+const $  = (sel, root = document) => root.querySelector(sel);
+const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
-const semMovimento = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const prazo = new Date(PACTO.expiraEm).getTime();
-const relogioHero = $('#relogio');
-const relogioTopo = $('#relogio-topo');
-const relogioBarra = $('#relogio-barra');
+const deadline = new Date(PACT.expiresAt).getTime();
+const heroClock = $('#clock');
+const topClock = $('#clock-top');
+const barClock = $('#clock-bar');
 
-const doisDigitos = n => String(n).padStart(2, '0');
+const twoDigits = n => String(n).padStart(2, '0');
 
-function encerrarPacto() {
-  document.body.dataset.pacto = 'encerrado';
+function closePact() {
+  document.body.dataset.pact = 'closed';
 
-  const aviso = $('#urgencia-titulo');
-  if (aviso) aviso.textContent = 'Este pacto foi encerrado';
+  const notice = $('#urgency-title');
+  if (notice) notice.textContent = 'Este pacto foi encerrado';
 
-  if (relogioHero) {
-    relogioHero.innerHTML =
-      '<p class="pacto-encerrado">As três casas cumpriram o prazo combinado. ' +
+  if (heroClock) {
+    heroClock.innerHTML =
+      '<p class="pact-closed">As três casas cumpriram o prazo combinado. ' +
       'Chame no WhatsApp para saber da próxima.</p>';
   }
 
-  if (relogioTopo) relogioTopo.textContent = 'Encerrado';
-  if (relogioBarra) relogioBarra.textContent = 'Encerrado';
+  if (topClock) topClock.textContent = 'Encerrado';
+  if (barClock) barClock.textContent = 'Encerrado';
 }
 
-function tique() {
-  const resta = prazo - Date.now();
+function tick() {
+  const remaining = deadline - Date.now();
 
-  if (!Number.isFinite(prazo)) return;
-  if (resta <= 0) { encerrarPacto(); return true; }
+  if (!Number.isFinite(deadline)) return;
+  if (remaining <= 0) { closePact(); return true; }
 
-  const seg  = Math.floor(resta / 1000) % 60;
-  const min  = Math.floor(resta / 60000) % 60;
-  const hora = Math.floor(resta / 3600000) % 24;
-  const dia  = Math.floor(resta / 86400000);
+  const seconds = Math.floor(remaining / 1000) % 60;
+  const minutes = Math.floor(remaining / 60000) % 60;
+  const hours   = Math.floor(remaining / 3600000) % 24;
+  const days    = Math.floor(remaining / 86400000);
 
-  if (relogioHero) {
-    $$('[data-unidade]', relogioHero).forEach(el => {
-      const v = { dia, hora, min, seg }[el.dataset.unidade];
-      el.textContent = doisDigitos(v);
+  if (heroClock) {
+    $$('[data-unit]', heroClock).forEach(el => {
+      const value = { day: days, hour: hours, min: minutes, sec: seconds }[el.dataset.unit];
+      el.textContent = twoDigits(value);
     });
   }
 
-  const curto = dia > 0
-    ? `${dia}d ${doisDigitos(hora)}:${doisDigitos(min)}:${doisDigitos(seg)}`
-    : `${doisDigitos(hora)}:${doisDigitos(min)}:${doisDigitos(seg)}`;
+  const short = days > 0
+    ? `${days}d ${twoDigits(hours)}:${twoDigits(minutes)}:${twoDigits(seconds)}`
+    : `${twoDigits(hours)}:${twoDigits(minutes)}:${twoDigits(seconds)}`;
 
-  if (relogioTopo)  relogioTopo.textContent = curto;
-  if (relogioBarra) relogioBarra.textContent = curto;
+  if (topClock) topClock.textContent = short;
+  if (barClock) barClock.textContent = short;
 
   return false;
 }
 
-if (Number.isFinite(prazo)) {
-  if (!tique()) {
-    const id = setInterval(() => { if (tique()) clearInterval(id); }, 1000);
+if (Number.isFinite(deadline)) {
+  if (!tick()) {
+    const id = setInterval(() => { if (tick()) clearInterval(id); }, 1000);
   }
 }
 
-const restantes = Math.max(PACTO.loteTotal - PACTO.loteAssinados, 0);
-const proporcao = PACTO.loteTotal > 0
-  ? Math.min(PACTO.loteAssinados / PACTO.loteTotal, 1)
-  : 0;
+const observer = new IntersectionObserver((entries, obs) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
 
-const loteRestam = $('#lote-restam');
-const loteCheio  = $('#lote-cheio');
-const loteNota   = $('#lote-nota');
-const loteTrilho = $('#lote-trilho');
-
-if (loteRestam) {
-  loteRestam.textContent = restantes === 1
-    ? 'resta 1 pacto'
-    : `restam ${restantes} pactos`;
-}
-
-if (loteNota) {
-  loteNota.textContent =
-    `${PACTO.loteAssinados} de ${PACTO.loteTotal} pactos deste lote já foram assinados.`;
-}
-
-if (loteTrilho) {
-  loteTrilho.setAttribute('aria-valuenow', String(PACTO.loteAssinados));
-  loteTrilho.setAttribute('aria-valuemax', String(PACTO.loteTotal));
-  loteTrilho.setAttribute('aria-valuetext',
-    `${PACTO.loteAssinados} de ${PACTO.loteTotal} pactos assinados`);
-}
-
-function encherLote() {
-  if (loteCheio) loteCheio.style.width = `${proporcao * 100}%`;
-}
-
-const olho = new IntersectionObserver((entradas, obs) => {
-  entradas.forEach(entrada => {
-    if (!entrada.isIntersecting) return;
-
-    entrada.target.classList.add('visivel');
-    if (entrada.target.id === 'urgencia') encherLote();
-
-    obs.unobserve(entrada.target);
+    entry.target.classList.add('visible');
+    obs.unobserve(entry.target);
   });
 }, { threshold: 0.05, rootMargin: '0px 0px 18% 0px' });
 
-$$('.reveal').forEach(el => olho.observe(el));
+$$('.reveal').forEach(el => observer.observe(el));
 
-const lacre = $('#lacre');
+const seal = $('#seal');
 
-if (lacre) {
-  const olhoSelo = new IntersectionObserver((entradas, obs) => {
-    entradas.forEach(entrada => {
-      if (!entrada.isIntersecting) return;
+if (seal) {
+  const sealObserver = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
 
       setTimeout(() => {
-        $('#selo', lacre)?.classList.add('selado');
-        lacre.classList.add('selado');
-        const aviso = $('#lacre-aviso', lacre);
-        if (aviso) aviso.textContent = 'Pacto selado, agora escolha o seu';
-      }, semMovimento ? 0 : 420);
+        $('#stamp', seal)?.classList.add('sealed');
+        seal.classList.add('sealed');
+        const notice = $('#seal-notice', seal);
+        if (notice) notice.textContent = 'Pacto selado, agora escolha o seu';
+      }, reducedMotion ? 0 : 420);
 
-      obs.unobserve(entrada.target);
+      obs.unobserve(entry.target);
     });
   }, { threshold: 0.55 });
 
-  olhoSelo.observe(lacre);
+  sealObserver.observe(seal);
 }
 
-function revelarAgora(destino) {
-  if (!destino) return;
-  const alvos = [destino, ...$$('.reveal', destino)].filter(e => e.classList.contains('reveal'));
-  alvos.forEach(e => { e.classList.add('visivel'); olho.unobserve(e); });
-  if ($('#urgencia', destino) || destino.id === 'urgencia') encherLote();
+function revealNow(target) {
+  if (!target) return;
+  const elements = [target, ...$$('.reveal', target)].filter(e => e.classList.contains('reveal'));
+  elements.forEach(e => { e.classList.add('visible'); observer.unobserve(e); });
 }
 
 $$('a[href^="#"]').forEach(link => {
   link.addEventListener('click', () => {
     const id = link.getAttribute('href').slice(1);
-    if (id) revelarAgora(document.getElementById(id));
+    if (id) revealNow(document.getElementById(id));
   });
 });
 
-if (loteCheio) setTimeout(encherLote, 600);
+const readingBar = $('#progress');
 
-const barraLeitura = $('#progresso');
+if (readingBar) {
+  let scheduled = false;
 
-if (barraLeitura) {
-  let agendado = false;
-
-  const medir = () => {
+  const measure = () => {
     const total = document.documentElement.scrollHeight - innerHeight;
-    const lido  = total > 0 ? Math.min(scrollY / total, 1) : 0;
-    barraLeitura.style.transform = `scaleX(${lido})`;
-    agendado = false;
+    const read  = total > 0 ? Math.min(scrollY / total, 1) : 0;
+    readingBar.style.transform = `scaleX(${read})`;
+    scheduled = false;
   };
 
   addEventListener('scroll', () => {
-    if (agendado) return;
-    agendado = true;
-    requestAnimationFrame(medir);
+    if (scheduled) return;
+    scheduled = true;
+    requestAnimationFrame(measure);
   }, { passive: true });
 
-  medir();
+  measure();
 }
 
-const seletor = $('#pacote');
-const forma   = $('#forma');
+const picker = $('#package');
+const form   = $('#form');
 
-$$('[data-escolhe]').forEach(btn => {
+$$('[data-pick]').forEach(btn => {
   btn.addEventListener('click', e => {
     e.preventDefault();
-    const chave = btn.dataset.escolhe;
+    const key = btn.dataset.pick;
 
-    if (seletor) seletor.value = chave;
+    if (picker) picker.value = key;
 
-    revelarAgora(document.getElementById('assinar'));
-    forma?.scrollIntoView({ behavior: semMovimento ? 'auto' : 'smooth', block: 'center' });
+    revealNow(document.getElementById('sign'));
+    form?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'center' });
 
     setTimeout(() => {
-      const vazio = $$('#forma input').find(i => !i.value);
-      vazio?.focus({ preventScroll: true });
-    }, semMovimento ? 0 : 700);
+      const empty = $$('#form input').find(i => !i.value);
+      empty?.focus({ preventScroll: true });
+    }, reducedMotion ? 0 : 700);
   });
 });
 
-const recado = $('#recado');
+const message = $('#message');
 
-function avisar(texto, tipo = 'erro') {
-  if (!recado) return;
-  recado.textContent = texto;
-  recado.className = `recado recado-${tipo}`;
-  recado.hidden = false;
+function warn(text, type = 'error') {
+  if (!message) return;
+  message.textContent = text;
+  message.className = `message message-${type}`;
+  message.hidden = false;
 }
 
-function limparAviso() {
-  if (recado) recado.hidden = true;
-  $$('.campo-erro').forEach(el => el.classList.remove('campo-erro'));
+function clearWarning() {
+  if (message) message.hidden = true;
+  $$('.field-error').forEach(el => el.classList.remove('field-error'));
 }
 
-forma?.addEventListener('submit', async e => {
+form?.addEventListener('submit', async e => {
   e.preventDefault();
-  limparAviso();
+  clearWarning();
 
-  if (document.body.dataset.pacto === 'encerrado') {
-    return avisar('Este pacto já foi encerrado. Chame no WhatsApp para saber da próxima.');
+  if (document.body.dataset.pact === 'closed') {
+    return warn('Este pacto já foi encerrado. Chame no WhatsApp para saber da próxima.');
   }
 
-  const dados = Object.fromEntries(new FormData(forma));
-  dados.nome     = dados.nome.trim().replace(/\s+/g, ' ');
-  dados.mundo    = dados.mundo.trim().toLowerCase();
-  dados.nick     = dados.nick.trim();
-  dados.email    = dados.email.trim();
-  dados.telefone = dados.telefone.trim();
+  const data = Object.fromEntries(new FormData(form));
+  data.nome     = data.nome.trim().replace(/\s+/g, ' ');
+  data.mundo    = data.mundo.trim().toLowerCase();
+  data.nick     = data.nick.trim();
+  data.email    = data.email.trim();
+  data.telefone = data.telefone.trim();
 
-  const digitos = dados.telefone.replace(/\D/g, '');
+  const digits = data.telefone.replace(/\D/g, '');
 
-  const problemas = [];
-  if (!/^\p{L}[\p{L}\s'.-]{1,}$/u.test(dados.nome)) problemas.push(['nome', 'Informe o seu nome.']);
-  if (!/^[a-z]{2}\d{1,4}$/.test(dados.mundo)) problemas.push(['mundo', 'Informe o mundo como aparece no jogo, por exemplo br143.']);
-  if (dados.nick.length < 2)           problemas.push(['nick',  'Informe o seu nick exatamente como está no jogo.']);
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(dados.email)) problemas.push(['email', 'Informe um e-mail válido para receber a confirmação.']);
-  if (digitos.length < 10 || digitos.length > 13) problemas.push(['telefone', 'Informe o seu WhatsApp com DDD, por exemplo (48) 98824-2773.']);
+  const issues = [];
+  if (!/^\p{L}[\p{L}\s'.-]{1,}$/u.test(data.nome)) issues.push(['nome', 'Informe o seu nome.']);
+  if (!/^[a-z]{2}\d{1,4}$/.test(data.mundo)) issues.push(['mundo', 'Informe o mundo como aparece no jogo, por exemplo br143.']);
+  if (data.nick.length < 2)           issues.push(['nick',  'Informe o seu nick exatamente como está no jogo.']);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email)) issues.push(['email', 'Informe um e-mail válido para receber a confirmação.']);
+  if (digits.length < 10 || digits.length > 13) issues.push(['telefone', 'Informe o seu WhatsApp com DDD, por exemplo (48) 98824-2773.']);
 
-  if (problemas.length) {
-    const [campo, msg] = problemas[0];
-    const el = forma.elements[campo];
-    el?.classList.add('campo-erro');
+  if (issues.length) {
+    const [field, msg] = issues[0];
+    const el = form.elements[field];
+    el?.classList.add('field-error');
     el?.focus();
-    return avisar(msg);
+    return warn(msg);
   }
 
-  const botao = $('#enviar');
-  botao?.setAttribute('aria-busy', 'true');
-  const rotulo = botao?.textContent;
-  if (botao) botao.textContent = 'Preparando o pagamento…';
+  const button = $('#submit');
+  button?.setAttribute('aria-busy', 'true');
+  const label = button?.textContent;
+  if (button) button.textContent = 'Preparando o pagamento…';
 
   try {
-    const resposta = await fetch(PACTO.checkoutUrl, {
+    const response = await fetch(PACT.checkoutUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dados),
+      body: JSON.stringify(data),
     });
 
-    const corpo = await resposta.json().catch(() => ({}));
+    const body = await response.json().catch(() => ({}));
 
-    if (!resposta.ok || !corpo.init_point) {
-      throw new Error(corpo.error || 'Não conseguimos abrir o pagamento agora.');
+    if (!response.ok || !body.init_point) {
+      throw new Error(body.error || 'Não conseguimos abrir o pagamento agora.');
     }
 
-    location.href = corpo.init_point;
-  } catch (erro) {
-    avisar(erro.message);
+    location.href = body.init_point;
+  } catch (error) {
+    warn(error.message);
   } finally {
-    botao?.removeAttribute('aria-busy');
-    if (botao && rotulo) botao.textContent = rotulo;
+    button?.removeAttribute('aria-busy');
+    if (button && label) button.textContent = label;
   }
 });
 
-const ano = $('#ano');
-if (ano) ano.textContent = new Date().getFullYear();
+const year = $('#year');
+if (year) year.textContent = new Date().getFullYear();
